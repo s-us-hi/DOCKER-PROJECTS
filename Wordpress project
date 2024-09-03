@@ -1,0 +1,45 @@
+vi docker-compose.yml
+services:
+  db:
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_USER: wordpress
+    image: mysql:5.7
+    restart: always
+    volumes:
+    - db_data:/var/lib/mysql:rw
+  wordpress:
+    depends_on:
+    - db
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_USER: wordpress
+    image: wordpress:latest
+    ports:
+    - published: 8080
+      target: 80
+    restart: always
+version: '3.3'
+volumes:
+  db_data: {}  ======> (paste the code in vi ans save)
+  less docker-compose.yml
+  ls
+  docker ps -a
+  docker system prune =======>(give (yes) to remove containers)
+  df -h
+  clear
+  docker-compose config
+  docker-compose
+  nohup docker-compose up &
+  tail -f nohup.out
+  docker-compose ps
+  docker-compose images
+  curl ifconfig.me
+  #####(go to the browser past the ip hit enter and select the language when terminal opens)
+  ####(give sub title==>name===>password===>email hit enter)
+  ####(login to the page)
+  
